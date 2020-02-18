@@ -1,0 +1,10 @@
+# Programs
+*.elf
+*.hex
+
+# Objects
+*.o
+*.lst
+
+# Editor files
+.vscode*
