@@ -18,8 +18,8 @@ OPTLEVEL = s
 
 CFLAGS = -DF_CPU=$(F_CPU) -O$(OPTLEVEL) -mmcu=$(MCU) -std=c99
 # If want some optimization, then use also
-# CFLAGS += -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
-# CFLAGS += -ffunction-sections -fdata-sections
+#CFLAGS += -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
+#CFLAGS += -ffunction-sections -fdata-sections
 CFLAGS += -Wall -Wstrict-prototypes
 CFLAGS += -Wa,-adhlns=$(<:.c=.lst)
 

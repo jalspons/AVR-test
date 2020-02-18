@@ -1,14 +1,13 @@
-#define F_CPU 16000000UL
-
-#define TAILING_DELAY 0
-#define CHANGE_DELAY 50
-
 #include <avr/io.h>
 #include <util/delay.h>
 
+#include "led.h"
+
 int main(void)
 {
+    /* Set all pins as output */
     DDRD = 0xFF;
+    /* Set only 3rd pin on */
     PORTD = 0x04;
 
     /* Currently this a loop that lights up 6 leds back and forth one by one. Similar to 
@@ -17,14 +16,12 @@ int main(void)
     while (1)
     {   
         for (unsigned int i = 1; i < 6; i++) {
-            PORTD = (PORTD | PORTD >> 1);
-            _delay_ms(TAILING_DELAY);
+            /* Shift bits forward to light up next LED */
             PORTD = (0x04 << i);
             _delay_ms(CHANGE_DELAY);
         }
         for (unsigned int i = 1; i < 6; i++) {
-            PORTD = (PORTD | PORTD >> 1);
-            _delay_ms(TAILING_DELAY);
+            /* Shift bits backward to light up previous LED */
             PORTD = (0x80 >> i);
             _delay_ms(CHANGE_DELAY);
         }
